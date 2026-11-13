@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "base": "release/v0.0.1",
+  "paused": null,
+  "inFlight": null,
+  "baseChecks": [],
+  "shadow": {
+    "processed": {}
+  },
+  "counters": {
+    "batchSeq": 0,
+    "ciRuns": 0,
+    "landedPrs": 0,
+    "landedBatches": 0,
+    "redBatches": 0,
+    "bisections": 0,
+    "culprits": 0
+  },
+  "history": [],
+  "updatedAt": "2026-11-13T23:23:44.906Z"
+}
