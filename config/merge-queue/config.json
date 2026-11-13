@@ -49,5 +49,5 @@
     ".cursor/**",
     ".windsurfrules"
   ],
-  "mode": "shadow"
+  "mode": "live"
 }
