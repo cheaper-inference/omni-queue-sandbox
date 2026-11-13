@@ -2,75 +2,16 @@
   "version": 1,
   "base": "release/v0.0.1",
   "paused": null,
-  "inFlight": {
-    "batchId": "b2",
-    "kind": "batch",
-    "candidateRef": "omni-queue/release-v0.0.1/b2-9a5c9d2044ef",
-    "candidateSha": "9a5c9d2044ef3a85b0459f4b5e86b904be1f9066",
-    "baseSha": "d0791be2aa3ae75f43243cbf6536a26c2d9c1f74",
-    "treeSha": "c14234823ca0a4277527bcd15144e5a754fe6b6a",
-    "prs": [
-      {
-        "n": 1,
-        "head": "3698d50556c4d5dbc4cfabebfc97c120b80a5ad5",
-        "title": "Shadow scenario: change 1",
-        "author": "diegosouzapw",
-        "labeledAt": "2026-11-13T23:23:11Z"
-      },
-      {
-        "n": 2,
-        "head": "9468ea858d1b1b571aed612048d4825c6464f558",
-        "title": "Shadow scenario: change 2",
-        "author": "diegosouzapw",
-        "labeledAt": "2026-11-13T23:23:13Z"
-      },
-      {
-        "n": 3,
-        "head": "48548b8674a9d1ce2c2c2da41113db784cb4579b",
-        "title": "Shadow scenario: change 3",
-        "author": "diegosouzapw",
-        "labeledAt": "2026-11-13T23:23:16Z"
-      },
-      {
-        "n": 5,
-        "head": "a653df7fcf51dbf5c773fa350e4142cb62563b71",
-        "title": "Live scenario: change A [skip ci]",
-        "author": "diegosouzapw",
-        "labeledAt": "2026-11-13T23:37:25Z"
-      },
-      {
-        "n": 6,
-        "head": "92efcd067fecfd9a7ba2513f05d9ab5559a06795",
-        "title": "Live scenario: change B",
-        "author": "diegosouzapw",
-        "labeledAt": "2026-11-13T23:37:27Z"
-      },
-      {
-        "n": 7,
-        "head": "819ee22f5d250a3fd37dcf2b32c323f9638bdc0a",
-        "title": "Live scenario: change C",
-        "author": "diegosouzapw",
-        "labeledAt": "2026-11-13T23:37:30Z"
-      }
-    ],
-    "stage": "testing",
-    "startedAt": "2026-11-13T23:41:11.619Z",
-    "attempts": 0,
-    "bisect": null
-  },
+  "inFlight": null,
   "baseChecks": [],
   "shadow": {
-    "processed": {
-      "1": "3698d50556c4d5dbc4cfabebfc97c120b80a5ad5",
-      "2": "9468ea858d1b1b571aed612048d4825c6464f558",
-      "3": "48548b8674a9d1ce2c2c2da41113db784cb4579b"
-    }
+    "processed": {}
   },
   "counters": {
     "batchSeq": 2,
     "ciRuns": 2,
-    "landedPrs": 0,
-    "landedBatches": 0,
+    "landedPrs": 6,
+    "landedBatches": 1,
     "redBatches": 0,
     "bisections": 0,
     "culprits": 0
@@ -142,7 +83,37 @@
         "7": "2026-11-13T23:37:30Z"
       },
       "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43528496352"
+    },
+    {
+      "at": "2026-11-13T23:46:02.612Z",
+      "type": "checks-green",
+      "batchId": "b2",
+      "prs": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7
+      ],
+      "sha": "9a5c9d2044ef3a85b0459f4b5e86b904be1f9066",
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43529361513"
+    },
+    {
+      "at": "2026-11-13T23:46:13.154Z",
+      "type": "landed",
+      "batchId": "b2",
+      "prs": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7
+      ],
+      "sha": "9a5c9d2044ef3a85b0459f4b5e86b904be1f9066",
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43529361513"
     }
   ],
-  "updatedAt": "2026-11-13T23:44:37.562Z"
+  "updatedAt": "2026-11-13T23:46:24.455Z"
 }
