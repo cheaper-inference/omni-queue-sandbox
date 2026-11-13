@@ -1,0 +1,30 @@
+name: Label as bot
+# Scenario "label applied by a non-approver": github-actions[bot] applies the queue label.
+on:
+  workflow_dispatch:
+    inputs:
+      pr:
+        description: PR number
+        required: true
+        type: string
+      label:
+        description: Label to apply
+        required: true
+        default: omni-queue
+        type: string
+permissions:
+  pull-requests: write
+  issues: write
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ inputs.pr }}
+          LABEL: ${{ inputs.label }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -eu
+          case "$PR" in (*[!0-9]*|'') echo "bad PR"; exit 1;; esac
+          gh pr edit "$PR" --repo "$REPO" --add-label "$LABEL"

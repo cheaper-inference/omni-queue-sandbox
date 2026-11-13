@@ -1,0 +1,28 @@
+name: CI
+on:
+  push:
+    branches: ["omni-queue/**"]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  gate-ci:
+    name: Gate / CI
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Toy test suite
+        run: |
+          set -eu
+          if [ -f BASE_RED ]; then
+            echo "::error file=BASE_RED,title=toy/base-red::the base is red"
+            exit 1
+          fi
+          if [ -f FAIL ]; then
+            echo "::error file=FAIL,title=toy/fail::a batched PR broke the toy suite"
+            exit 1
+          fi
+          echo "toy suite green"

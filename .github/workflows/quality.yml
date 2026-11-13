@@ -1,0 +1,30 @@
+name: Quality Gates
+on:
+  push:
+    branches: ["omni-queue/**"]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  gate-quality:
+    name: Gate / Quality
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Toy quality gate
+        run: |
+          set -eu
+          if [ -f FAIL_QUALITY ]; then
+            echo "::error file=FAIL_QUALITY,title=toy/quality::quality gate failed"
+            exit 1
+          fi
+          echo "toy quality green"
+  merge-integrity:
+    name: Merge integrity (changelog + generated skills)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - run: echo "toy merge integrity green"
