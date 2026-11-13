@@ -3,12 +3,12 @@
   "base": "release/v0.0.1",
   "paused": null,
   "inFlight": {
-    "batchId": "b4",
+    "batchId": "b5",
     "kind": "batch",
-    "candidateRef": "omni-queue/release-v0.0.1/b4-e7b171b7ef45",
-    "candidateSha": "e7b171b7ef45ad966c80a81be3fa8a608af900f0",
+    "candidateRef": "omni-queue/release-v0.0.1/b5-385d3e3538ab",
+    "candidateSha": "385d3e3538ab792916302d9050b602515ec19767",
     "baseSha": "9a5c9d2044ef3a85b0459f4b5e86b904be1f9066",
-    "treeSha": "a4876929070407c1b1a7ac8f12f6b63243bab523",
+    "treeSha": "af07dfad882612b924bfbd573f8e417367edc3e3",
     "prs": [
       {
         "n": 9,
@@ -23,17 +23,10 @@
         "title": "Bisect scenario: change 2",
         "author": "diegosouzapw",
         "labeledAt": "2026-11-13T23:47:56Z"
-      },
-      {
-        "n": 11,
-        "head": "6935a1ccba3c7020737e226c4bdb84414dcfbab5",
-        "title": "Bisect scenario: change 3 (culprit)",
-        "author": "diegosouzapw",
-        "labeledAt": "2026-11-13T23:47:58Z"
       }
     ],
     "stage": "testing",
-    "startedAt": "2026-11-13T23:50:41.953Z",
+    "startedAt": "2026-11-13T23:51:24.601Z",
     "attempts": 0,
     "bisect": {
       "rootBatchId": "b3",
@@ -52,7 +45,9 @@
             "title": "Bisect scenario: change 2",
             "author": "diegosouzapw",
             "labeledAt": "2026-11-13T23:47:56Z"
-          },
+          }
+        ],
+        [
           {
             "n": 11,
             "head": "6935a1ccba3c7020737e226c4bdb84414dcfbab5",
@@ -87,7 +82,7 @@
       ],
       "culprits": [],
       "landed": [],
-      "steps": 0
+      "steps": 1
     }
   },
   "baseChecks": [],
@@ -95,11 +90,11 @@
     "processed": {}
   },
   "counters": {
-    "batchSeq": 4,
-    "ciRuns": 4,
+    "batchSeq": 5,
+    "ciRuns": 5,
     "landedPrs": 6,
     "landedBatches": 1,
-    "redBatches": 1,
+    "redBatches": 2,
     "bisections": 1,
     "culprits": 0
   },
@@ -274,7 +269,49 @@
         "11": "2026-11-13T23:47:58Z"
       },
       "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43529785966"
+    },
+    {
+      "at": "2026-11-13T23:51:21.102Z",
+      "type": "checks-red",
+      "batchId": "b4",
+      "prs": [
+        9,
+        10,
+        11
+      ],
+      "sha": "e7b171b7ef45ad966c80a81be3fa8a608af900f0",
+      "detail": "Gate / CI",
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43530120044"
+    },
+    {
+      "at": "2026-11-13T23:51:21.302Z",
+      "type": "bisect-split",
+      "batchId": "b4",
+      "prs": [
+        9,
+        10,
+        11
+      ],
+      "sha": "e7b171b7ef45ad966c80a81be3fa8a608af900f0",
+      "detail": "segment of 3 red: testing #9, #10 next",
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43530120044"
+    },
+    {
+      "at": "2026-11-13T23:51:26.478Z",
+      "type": "batch-started",
+      "batchId": "b5",
+      "prs": [
+        9,
+        10
+      ],
+      "sha": "385d3e3538ab792916302d9050b602515ec19767",
+      "detail": "bisect of b3: 2 PR(s) on 9a5c9d2044ef",
+      "labeledAt": {
+        "9": "2026-11-13T23:47:54Z",
+        "10": "2026-11-13T23:47:56Z"
+      },
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43530120044"
     }
   ],
-  "updatedAt": "2026-11-13T23:50:56.997Z"
+  "updatedAt": "2026-11-13T23:51:40.419Z"
 }
