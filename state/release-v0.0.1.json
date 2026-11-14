@@ -1,14 +1,35 @@
 {
   "version": 1,
   "base": "release/v0.0.1",
-  "paused": {
-    "reason": "base-red",
-    "since": "2026-11-14T00:07:19.570Z",
-    "baseSha": "a843649be57978546bda45353d72d7466aa49001",
-    "detail": "all 1 failure(s) also fail on base a843649be579",
-    "issue": 16
+  "paused": null,
+  "inFlight": {
+    "batchId": "b9",
+    "kind": "batch",
+    "candidateRef": "omni-queue/release-v0.0.1/b9-0f78d16e33ee",
+    "candidateSha": "0f78d16e33ee19ece7216979f29ad93eb022d37a",
+    "baseSha": "85f3d8e3ab5748f316c2125dbd6f42d670267692",
+    "treeSha": "b94649d741d98d2063ec598e85a4efbcf78933be",
+    "prs": [
+      {
+        "n": 17,
+        "head": "0fd414e7086236d3ef6d49133e39fdb6f24c14e7",
+        "title": "Base-red scenario: change 1",
+        "author": "diegosouzapw",
+        "labeledAt": "2026-11-13T23:55:13Z"
+      },
+      {
+        "n": 18,
+        "head": "0dd37572fefa099897137c4dbd11c14030333389",
+        "title": "Base-red scenario: change 2",
+        "author": "diegosouzapw",
+        "labeledAt": "2026-11-13T23:55:16Z"
+      }
+    ],
+    "stage": "testing",
+    "startedAt": "2026-11-14T00:09:15.917Z",
+    "attempts": 0,
+    "bisect": null
   },
-  "inFlight": null,
   "baseChecks": [
     {
       "baseSha": "a843649be57978546bda45353d72d7466aa49001",
@@ -28,8 +49,8 @@
     "processed": {}
   },
   "counters": {
-    "batchSeq": 8,
-    "ciRuns": 9,
+    "batchSeq": 9,
+    "ciRuns": 10,
     "landedPrs": 11,
     "landedBatches": 3,
     "redBatches": 4,
@@ -409,7 +430,30 @@
       "sha": "a843649be57978546bda45353d72d7466aa49001",
       "detail": "all 1 failure(s) also fail on base a843649be579",
       "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43531897610"
+    },
+    {
+      "at": "2026-11-14T00:09:11.127Z",
+      "type": "resumed",
+      "sha": "85f3d8e3ab5748f316c2125dbd6f42d670267692",
+      "detail": "base moved a843649be579 → 85f3d8e3ab57 after a base-red pause",
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43532174258"
+    },
+    {
+      "at": "2026-11-14T00:09:17.501Z",
+      "type": "batch-started",
+      "batchId": "b9",
+      "prs": [
+        17,
+        18
+      ],
+      "sha": "0f78d16e33ee19ece7216979f29ad93eb022d37a",
+      "detail": "2 PR(s) on 85f3d8e3ab57",
+      "labeledAt": {
+        "17": "2026-11-13T23:55:13Z",
+        "18": "2026-11-13T23:55:16Z"
+      },
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43532174258"
     }
   ],
-  "updatedAt": "2026-11-14T00:07:48.075Z"
+  "updatedAt": "2026-11-14T00:09:18.761Z"
 }
