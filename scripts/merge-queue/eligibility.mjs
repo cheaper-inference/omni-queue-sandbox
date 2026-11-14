@@ -415,9 +415,9 @@ export function evaluateEligibility(pr, ctx) {
       // While approve.mjs may still be recording a fresh protected label, stay silent.
       if (prot?.reason !== "approval-missing") {
         const lead = count
-          ? `This PR changes agent-instruction surfaces (${surface}). `
+          ? `This PR changes protected surfaces (${surface}). `
           : "GitHub did not list every changed file of this PR, so omni-queue cannot rule out " +
-            "agent-instruction surfaces. ";
+            "protected surfaces. ";
         comment(
           `protected:${h12}`,
           lead +
@@ -439,7 +439,7 @@ export function evaluateEligibility(pr, ctx) {
   }
 
   if (config.mode === "shadow" && ctx.state?.shadow?.processed?.[String(n)] === pr.headSha) {
-    reason("shadow-processed", `head ${h12} already validated in shadow mode`);
+    reason("shadow-processed", `head ${h12} already processed in shadow mode`);
   }
 
   return { eligible: reasons.length === 0, reasons, actions, approval, protectedSurface };

@@ -16,8 +16,18 @@
 //   labeled config.label / config.protectedApprovalLabel by an approver → commit status
 //     `success` on pull_request.head.sha, context APPROVAL_CONTEXTS[kind],
 //     description "approved by <login>" (App token, so the creator is `<appSlug>[bot]`);
-//   labeled by a non-approver → comment once (key "not-approver"), no status;
-//   unlabeled → status `failure` "approval withdrawn by <login>" on the same head/context.
+//   labeled by a non-approver → comment once (key "not-approver"), no status
+//     (in shadow mode no comment either: shadow writes nothing on a pull request);
+//   unlabeled → status `failure` "approval withdrawn by <login>" on the same head/context;
+//     in shadow mode (config.mode) nothing at all is written for a removal.
+//
+// SHADOW MODE writes no `failure`: a red "approval withdrawn" status on a PR that the other
+// merge path still lands is a visible side effect, and that path may refuse a PR with a failing
+// status. Skipping it is safe because eligibility.approvalFor never lets the older `success`
+// count by itself: without the label the PR is ineligible (`no-label`), a label put back by a
+// non-approver is `label-not-by-approver`, and after an approver's new label only a status
+// created no earlier than 60 s before THAT label approves the head (written by the `labeled`
+// job of that event, on the head the approver saw).
 //
 // LEVEL-triggered: the per-PR-and-label group serializes a quick labeled→unlabeled (or
 // unlabeled→labeled) pair, and before writing a status the PR is re-read so the CURRENT label set
@@ -99,6 +109,9 @@ export async function handleLabelEvent(input) {
     typeof runUrl === "string" && runUrl.startsWith("https://") ? runUrl : undefined;
 
   if (action === "unlabeled") {
+    if (config.mode !== "live") {
+      return ignored(`shadow mode: no status written for ${labelName} removed from #${pr.number}`);
+    }
     if (await labelPresent()) {
       return ignored(`#${pr.number} ${labelName} was applied again after this removal`);
     }
@@ -114,7 +127,9 @@ export async function handleLabelEvent(input) {
 
   const approvers = new Set(config.approvers.map((a) => a.toLowerCase()));
   if (!approvers.has(actor.toLowerCase())) {
-    await gh.commentOnce(pr.number, "not-approver", notApproverComment(config, labelName, actor));
+    if (config.mode === "live") {
+      await gh.commentOnce(pr.number, "not-approver", notApproverComment(config, labelName, actor));
+    }
     log(`#${pr.number} ${labelName} applied by non-approver ${actor}: no status written`);
     return { action: "rejected-actor", kind, sha, actor };
   }
