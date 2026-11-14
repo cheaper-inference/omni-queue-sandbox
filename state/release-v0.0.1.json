@@ -2,34 +2,7 @@
   "version": 1,
   "base": "release/v0.0.1",
   "paused": null,
-  "inFlight": {
-    "batchId": "b13",
-    "kind": "batch",
-    "candidateRef": "omni-queue/release-v0.0.1/b13-acfab913414e",
-    "candidateSha": "acfab913414e6d7f0cba90498daeb23f3db0bdb2",
-    "baseSha": "27219d96025848c6a0ccdb52ab81aa5e3598f818",
-    "treeSha": "c65a16c324945d5648f9207164d436cf5bab7361",
-    "prs": [
-      {
-        "n": 28,
-        "head": "78151ba3559fb2eb522f0dd73cff2b1d09ee15de",
-        "title": "Squash rehearsal 1",
-        "author": "diegosouzapw",
-        "labeledAt": "2026-11-14T12:17:24Z"
-      },
-      {
-        "n": 29,
-        "head": "973c4d8da322fbdac8c63e54207aba7514120efe",
-        "title": "Squash rehearsal 2",
-        "author": "diegosouzapw",
-        "labeledAt": "2026-11-14T12:17:27Z"
-      }
-    ],
-    "stage": "testing",
-    "startedAt": "2026-11-14T12:33:18.034Z",
-    "attempts": 0,
-    "bisect": null
-  },
+  "inFlight": null,
   "baseChecks": [
     {
       "baseSha": "a843649be57978546bda45353d72d7466aa49001",
@@ -51,8 +24,8 @@
   "counters": {
     "batchSeq": 13,
     "ciRuns": 14,
-    "landedPrs": 16,
-    "landedBatches": 6,
+    "landedPrs": 18,
+    "landedBatches": 7,
     "redBatches": 4,
     "bisections": 1,
     "culprits": 1
@@ -602,7 +575,29 @@
         "29": "2026-11-14T12:17:27Z"
       },
       "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43595375561"
+    },
+    {
+      "at": "2026-11-14T12:33:42.400Z",
+      "type": "checks-green",
+      "batchId": "b13",
+      "prs": [
+        28,
+        29
+      ],
+      "sha": "acfab913414e6d7f0cba90498daeb23f3db0bdb2",
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43595418259"
+    },
+    {
+      "at": "2026-11-14T12:33:51.659Z",
+      "type": "landed",
+      "batchId": "b13",
+      "prs": [
+        28,
+        29
+      ],
+      "sha": "a9ce716501c47c26292a08a88e82e5faf75a3260",
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43595418259"
     }
   ],
-  "updatedAt": "2026-11-14T12:33:21.785Z"
+  "updatedAt": "2026-11-14T12:33:59.368Z"
 }
