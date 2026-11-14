@@ -2,34 +2,7 @@
   "version": 1,
   "base": "release/v0.0.1",
   "paused": null,
-  "inFlight": {
-    "batchId": "b19",
-    "kind": "batch",
-    "candidateRef": "omni-queue/release-v0.0.1/b19-9013c60dd187",
-    "candidateSha": "9013c60dd187eb9be55aab7f11b4d83ae355ffcd",
-    "baseSha": "cbbb718db8933779c6abda3eddfa8447375c42a7",
-    "treeSha": "f27735767ed02af0982c927bbad7f5b60fe0c204",
-    "prs": [
-      {
-        "n": 38,
-        "head": "2d6ecbda185354fc0b0d52ffbcaaaf25e59501b4",
-        "title": "Live regression 1",
-        "author": "diegosouzapw",
-        "labeledAt": "2026-11-14T16:31:03Z"
-      },
-      {
-        "n": 39,
-        "head": "736f22684b7ad2ab23452c2f48850c7fcc0c2931",
-        "title": "Live regression 2",
-        "author": "diegosouzapw",
-        "labeledAt": "2026-11-14T16:31:06Z"
-      }
-    ],
-    "stage": "testing",
-    "startedAt": "2026-11-14T16:41:53.790Z",
-    "attempts": 0,
-    "bisect": null
-  },
+  "inFlight": null,
   "baseChecks": [
     {
       "baseSha": "a843649be57978546bda45353d72d7466aa49001",
@@ -54,8 +27,8 @@
   "counters": {
     "batchSeq": 19,
     "ciRuns": 20,
-    "landedPrs": 20,
-    "landedBatches": 8,
+    "landedPrs": 22,
+    "landedBatches": 9,
     "redBatches": 7,
     "bisections": 2,
     "culprits": 3
@@ -828,7 +801,29 @@
         "39": "2026-11-14T16:31:06Z"
       },
       "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43616987996"
+    },
+    {
+      "at": "2026-11-14T16:42:18.155Z",
+      "type": "checks-green",
+      "batchId": "b19",
+      "prs": [
+        38,
+        39
+      ],
+      "sha": "9013c60dd187eb9be55aab7f11b4d83ae355ffcd",
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43617033369"
+    },
+    {
+      "at": "2026-11-14T16:42:23.837Z",
+      "type": "landed",
+      "batchId": "b19",
+      "prs": [
+        38,
+        39
+      ],
+      "sha": "9013c60dd187eb9be55aab7f11b4d83ae355ffcd",
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43617033369"
     }
   ],
-  "updatedAt": "2026-11-14T16:41:57.365Z"
+  "updatedAt": "2026-11-14T16:42:33.164Z"
 }
