@@ -19,7 +19,7 @@
     "maxWaitMinutes": 10
   },
   "landing": {
-    "mode": "merge-ff"
+    "mode": "squash-api"
   },
   "requiredChecks": [
     "Gate / CI",
@@ -28,6 +28,10 @@
   ],
   "advisoryChecks": [
     "Build (advisory)"
+  ],
+  "aggregateChecks": [
+    "Gate / CI",
+    "Gate / Quality"
   ],
   "checksTimeoutMinutes": 240,
   "infraRetries": 1,
