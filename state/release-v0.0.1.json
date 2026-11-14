@@ -2,7 +2,34 @@
   "version": 1,
   "base": "release/v0.0.1",
   "paused": null,
-  "inFlight": null,
+  "inFlight": {
+    "batchId": "b15",
+    "kind": "batch",
+    "candidateRef": "omni-queue/release-v0.0.1/b15-a9fa877f82d4",
+    "candidateSha": "a9fa877f82d45ea54770188d005d00856ebb434c",
+    "baseSha": "335f39f6b381f8f5bc9e634f81214a390ed20fd0",
+    "treeSha": "c7f20520337365161b54f7dcd87eea6f408d40d7",
+    "prs": [
+      {
+        "n": 34,
+        "head": "a315d6d893ee15efaee18b6abcedd474402ab825",
+        "title": "Shadow rehearsal: good",
+        "author": "diegosouzapw",
+        "labeledAt": "2026-11-14T16:09:20Z"
+      },
+      {
+        "n": 35,
+        "head": "bc29c466cca11df18bd260d9f10506b6c0dc3a9a",
+        "title": "Shadow rehearsal: breaks CI",
+        "author": "diegosouzapw",
+        "labeledAt": "2026-11-14T16:09:22Z"
+      }
+    ],
+    "stage": "testing",
+    "startedAt": "2026-11-14T16:20:26.800Z",
+    "attempts": 0,
+    "bisect": null
+  },
   "baseChecks": [
     {
       "baseSha": "a843649be57978546bda45353d72d7466aa49001",
@@ -22,8 +49,8 @@
     "processed": {}
   },
   "counters": {
-    "batchSeq": 14,
-    "ciRuns": 15,
+    "batchSeq": 15,
+    "ciRuns": 16,
     "landedPrs": 20,
     "landedBatches": 8,
     "redBatches": 4,
@@ -635,7 +662,23 @@
       ],
       "sha": "cc74a69b9fbdb3323b6a1b53ea218cec44e3ca07",
       "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43597260845"
+    },
+    {
+      "at": "2026-11-14T16:20:29.200Z",
+      "type": "batch-started",
+      "batchId": "b15",
+      "prs": [
+        34,
+        35
+      ],
+      "sha": "a9fa877f82d45ea54770188d005d00856ebb434c",
+      "detail": "2 PR(s) on 335f39f6b381",
+      "labeledAt": {
+        "34": "2026-11-14T16:09:20Z",
+        "35": "2026-11-14T16:09:22Z"
+      },
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43615010196"
     }
   ],
-  "updatedAt": "2026-11-14T15:57:21.559Z"
+  "updatedAt": "2026-11-14T16:20:30.896Z"
 }
