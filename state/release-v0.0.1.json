@@ -2,7 +2,34 @@
   "version": 1,
   "base": "release/v0.0.1",
   "paused": null,
-  "inFlight": null,
+  "inFlight": {
+    "batchId": "b19",
+    "kind": "batch",
+    "candidateRef": "omni-queue/release-v0.0.1/b19-9013c60dd187",
+    "candidateSha": "9013c60dd187eb9be55aab7f11b4d83ae355ffcd",
+    "baseSha": "cbbb718db8933779c6abda3eddfa8447375c42a7",
+    "treeSha": "f27735767ed02af0982c927bbad7f5b60fe0c204",
+    "prs": [
+      {
+        "n": 38,
+        "head": "2d6ecbda185354fc0b0d52ffbcaaaf25e59501b4",
+        "title": "Live regression 1",
+        "author": "diegosouzapw",
+        "labeledAt": "2026-11-14T16:31:03Z"
+      },
+      {
+        "n": 39,
+        "head": "736f22684b7ad2ab23452c2f48850c7fcc0c2931",
+        "title": "Live regression 2",
+        "author": "diegosouzapw",
+        "labeledAt": "2026-11-14T16:31:06Z"
+      }
+    ],
+    "stage": "testing",
+    "startedAt": "2026-11-14T16:41:53.790Z",
+    "attempts": 0,
+    "bisect": null
+  },
   "baseChecks": [
     {
       "baseSha": "a843649be57978546bda45353d72d7466aa49001",
@@ -25,8 +52,8 @@
     }
   },
   "counters": {
-    "batchSeq": 18,
-    "ciRuns": 19,
+    "batchSeq": 19,
+    "ciRuns": 20,
     "landedPrs": 20,
     "landedBatches": 8,
     "redBatches": 7,
@@ -785,7 +812,23 @@
       "sha": "61f68ebcc91b1713deed998bffd1a78ccaf7f0e9",
       "detail": "Gate / CI",
       "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43616033271"
+    },
+    {
+      "at": "2026-11-14T16:41:56.002Z",
+      "type": "batch-started",
+      "batchId": "b19",
+      "prs": [
+        38,
+        39
+      ],
+      "sha": "9013c60dd187eb9be55aab7f11b4d83ae355ffcd",
+      "detail": "2 PR(s) on cbbb718db893",
+      "labeledAt": {
+        "38": "2026-11-14T16:31:03Z",
+        "39": "2026-11-14T16:31:06Z"
+      },
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43616987996"
     }
   ],
-  "updatedAt": "2026-11-14T16:34:07.853Z"
+  "updatedAt": "2026-11-14T16:41:57.365Z"
 }
