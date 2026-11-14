@@ -51,7 +51,12 @@
     ".github/prompts/**",
     ".cursorrules",
     ".cursor/**",
-    ".windsurfrules"
+    ".windsurfrules",
+    ".github/workflows/**",
+    ".github/actions/**",
+    "scripts/merge-queue/**",
+    "config/merge-queue/**",
+    ".mergify.yml"
   ],
-  "mode": "live"
+  "mode": "shadow"
 }
