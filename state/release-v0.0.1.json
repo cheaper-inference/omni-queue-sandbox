@@ -3,12 +3,12 @@
   "base": "release/v0.0.1",
   "paused": null,
   "inFlight": {
-    "batchId": "b10",
+    "batchId": "b11",
     "kind": "batch",
-    "candidateRef": "omni-queue/release-v0.0.1/b10-e1eeaf373fa9",
-    "candidateSha": "e1eeaf373fa9c922ee511ead796b122c30c67a10",
-    "baseSha": "0f78d16e33ee19ece7216979f29ad93eb022d37a",
-    "treeSha": "8ccb4a3124d0c35369dd6ecd5f48fbb8079e4365",
+    "candidateRef": "omni-queue/release-v0.0.1/b11-ee5e43492603",
+    "candidateSha": "ee5e434926035b8c54c616f9ebd01b1f7a76528c",
+    "baseSha": "5778ec4b3c8896163396e4437cacf80d891f4a58",
+    "treeSha": "6467f9839e42cacc42152efb0bfc6033745f4b57",
     "prs": [
       {
         "n": 20,
@@ -26,7 +26,7 @@
       }
     ],
     "stage": "testing",
-    "startedAt": "2026-11-14T00:21:51.652Z",
+    "startedAt": "2026-11-14T00:22:19.020Z",
     "attempts": 0,
     "bisect": null
   },
@@ -49,8 +49,8 @@
     "processed": {}
   },
   "counters": {
-    "batchSeq": 10,
-    "ciRuns": 11,
+    "batchSeq": 11,
+    "ciRuns": 12,
     "landedPrs": 13,
     "landedBatches": 4,
     "redBatches": 4,
@@ -491,7 +491,46 @@
         "21": "2026-11-14T00:10:59Z"
       },
       "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43533627032"
+    },
+    {
+      "at": "2026-11-14T00:22:15.290Z",
+      "type": "checks-green",
+      "batchId": "b10",
+      "prs": [
+        20,
+        21
+      ],
+      "sha": "e1eeaf373fa9c922ee511ead796b122c30c67a10",
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43533702138"
+    },
+    {
+      "at": "2026-11-14T00:22:18.768Z",
+      "type": "land-rejected",
+      "batchId": "b10",
+      "prs": [
+        20,
+        21
+      ],
+      "sha": "e1eeaf373fa9c922ee511ead796b122c30c67a10",
+      "detail": "base moved: base release/v0.0.1 is at 5778ec4b3c8896163396e4437cacf80d891f4a58, expected 0f78d16e33ee19ece7216979f29ad93eb022d37a (or a commit between it and the candidate); recomposing",
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43533702138"
+    },
+    {
+      "at": "2026-11-14T00:22:20.827Z",
+      "type": "batch-started",
+      "batchId": "b11",
+      "prs": [
+        20,
+        21
+      ],
+      "sha": "ee5e434926035b8c54c616f9ebd01b1f7a76528c",
+      "detail": "2 PR(s) on 5778ec4b3c88",
+      "labeledAt": {
+        "20": "2026-11-14T00:10:57Z",
+        "21": "2026-11-14T00:10:59Z"
+      },
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43533702138"
     }
   ],
-  "updatedAt": "2026-11-14T00:21:54.471Z"
+  "updatedAt": "2026-11-14T00:22:30.529Z"
 }
