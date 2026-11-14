@@ -1,49 +1,29 @@
 {
   "version": 1,
   "base": "release/v0.0.1",
-  "paused": null,
-  "inFlight": {
-    "batchId": "basecheck-a843649be579",
-    "kind": "base-check",
-    "candidateRef": "omni-queue/release-v0.0.1/basecheck-a843649be579",
-    "candidateSha": "a843649be57978546bda45353d72d7466aa49001",
+  "paused": {
+    "reason": "base-red",
+    "since": "2026-11-14T00:07:19.570Z",
     "baseSha": "a843649be57978546bda45353d72d7466aa49001",
-    "treeSha": null,
-    "prs": [],
-    "stage": "testing",
-    "startedAt": "2026-11-14T00:06:52.177Z",
-    "attempts": 0,
-    "bisect": null,
-    "pendingRed": {
-      "batchId": "b8",
-      "candidateSha": "96e927e657e4324d08f54f5ac305ffb0934f5f2e",
-      "prs": [
-        {
-          "n": 17,
-          "head": "0fd414e7086236d3ef6d49133e39fdb6f24c14e7",
-          "title": "Base-red scenario: change 1",
-          "author": "diegosouzapw",
-          "labeledAt": "2026-11-13T23:55:13Z"
-        },
-        {
-          "n": 18,
-          "head": "0dd37572fefa099897137c4dbd11c14030333389",
-          "title": "Base-red scenario: change 2",
-          "author": "diegosouzapw",
-          "labeledAt": "2026-11-13T23:55:16Z"
-        }
-      ],
+    "detail": "all 1 failure(s) also fail on base a843649be579",
+    "issue": 16
+  },
+  "inFlight": null,
+  "baseChecks": [
+    {
+      "baseSha": "a843649be57978546bda45353d72d7466aa49001",
+      "ref": "omni-queue/release-v0.0.1/basecheck-a843649be579",
+      "status": "red",
+      "startedAt": "2026-11-14T00:06:52.177Z",
       "signatures": [
         {
           "check": "Gate / CI",
           "key": "base_red toy/base-red",
           "infra": false
         }
-      ],
-      "bisect": null
+      ]
     }
-  },
-  "baseChecks": [],
+  ],
   "shadow": {
     "processed": {}
   },
@@ -409,7 +389,27 @@
       "sha": "a843649be57978546bda45353d72d7466aa49001",
       "detail": "b8 red while a base-red issue is open: testing the bare base",
       "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43531896858"
+    },
+    {
+      "at": "2026-11-14T00:07:19.282Z",
+      "type": "checks-red",
+      "batchId": "basecheck-a843649be579",
+      "sha": "a843649be57978546bda45353d72d7466aa49001",
+      "detail": "base-check red: Gate / CI",
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43531897610"
+    },
+    {
+      "at": "2026-11-14T00:07:19.570Z",
+      "type": "base-red-paused",
+      "batchId": "b8",
+      "prs": [
+        17,
+        18
+      ],
+      "sha": "a843649be57978546bda45353d72d7466aa49001",
+      "detail": "all 1 failure(s) also fail on base a843649be579",
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43531897610"
     }
   ],
-  "updatedAt": "2026-11-14T00:07:01.540Z"
+  "updatedAt": "2026-11-14T00:07:27.300Z"
 }
