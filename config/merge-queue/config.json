@@ -19,7 +19,7 @@
     "maxWaitMinutes": 10
   },
   "landing": {
-    "mode": "squash-api"
+    "mode": "merge-ff"
   },
   "requiredChecks": [
     "Gate / CI",
