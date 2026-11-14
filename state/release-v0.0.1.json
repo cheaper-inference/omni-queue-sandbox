@@ -2,7 +2,34 @@
   "version": 1,
   "base": "release/v0.0.1",
   "paused": null,
-  "inFlight": null,
+  "inFlight": {
+    "batchId": "b10",
+    "kind": "batch",
+    "candidateRef": "omni-queue/release-v0.0.1/b10-e1eeaf373fa9",
+    "candidateSha": "e1eeaf373fa9c922ee511ead796b122c30c67a10",
+    "baseSha": "0f78d16e33ee19ece7216979f29ad93eb022d37a",
+    "treeSha": "8ccb4a3124d0c35369dd6ecd5f48fbb8079e4365",
+    "prs": [
+      {
+        "n": 20,
+        "head": "1dc8bfc7b8d6895f9c3c8af898b9fb71622ed7e4",
+        "title": "Race scenario: change 1",
+        "author": "diegosouzapw",
+        "labeledAt": "2026-11-14T00:10:57Z"
+      },
+      {
+        "n": 21,
+        "head": "c48b38a476d266c3a48100f11accb1819cd637c7",
+        "title": "Race scenario: change 2",
+        "author": "diegosouzapw",
+        "labeledAt": "2026-11-14T00:10:59Z"
+      }
+    ],
+    "stage": "testing",
+    "startedAt": "2026-11-14T00:21:51.652Z",
+    "attempts": 0,
+    "bisect": null
+  },
   "baseChecks": [
     {
       "baseSha": "a843649be57978546bda45353d72d7466aa49001",
@@ -22,8 +49,8 @@
     "processed": {}
   },
   "counters": {
-    "batchSeq": 9,
-    "ciRuns": 10,
+    "batchSeq": 10,
+    "ciRuns": 11,
     "landedPrs": 13,
     "landedBatches": 4,
     "redBatches": 4,
@@ -448,7 +475,23 @@
       ],
       "sha": "0f78d16e33ee19ece7216979f29ad93eb022d37a",
       "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43532249043"
+    },
+    {
+      "at": "2026-11-14T00:21:53.296Z",
+      "type": "batch-started",
+      "batchId": "b10",
+      "prs": [
+        20,
+        21
+      ],
+      "sha": "e1eeaf373fa9c922ee511ead796b122c30c67a10",
+      "detail": "2 PR(s) on 0f78d16e33ee",
+      "labeledAt": {
+        "20": "2026-11-14T00:10:57Z",
+        "21": "2026-11-14T00:10:59Z"
+      },
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43533627032"
     }
   ],
-  "updatedAt": "2026-11-14T00:12:52.387Z"
+  "updatedAt": "2026-11-14T00:21:54.471Z"
 }
