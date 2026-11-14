@@ -3,32 +3,45 @@
   "base": "release/v0.0.1",
   "paused": null,
   "inFlight": {
-    "batchId": "b8",
-    "kind": "batch",
-    "candidateRef": "omni-queue/release-v0.0.1/b8-96e927e657e4",
-    "candidateSha": "96e927e657e4324d08f54f5ac305ffb0934f5f2e",
+    "batchId": "basecheck-a843649be579",
+    "kind": "base-check",
+    "candidateRef": "omni-queue/release-v0.0.1/basecheck-a843649be579",
+    "candidateSha": "a843649be57978546bda45353d72d7466aa49001",
     "baseSha": "a843649be57978546bda45353d72d7466aa49001",
-    "treeSha": "b386d2869364c1e743319a66370dd0ac59a1b8e7",
-    "prs": [
-      {
-        "n": 17,
-        "head": "0fd414e7086236d3ef6d49133e39fdb6f24c14e7",
-        "title": "Base-red scenario: change 1",
-        "author": "diegosouzapw",
-        "labeledAt": "2026-11-13T23:55:13Z"
-      },
-      {
-        "n": 18,
-        "head": "0dd37572fefa099897137c4dbd11c14030333389",
-        "title": "Base-red scenario: change 2",
-        "author": "diegosouzapw",
-        "labeledAt": "2026-11-13T23:55:16Z"
-      }
-    ],
+    "treeSha": null,
+    "prs": [],
     "stage": "testing",
-    "startedAt": "2026-11-14T00:06:12.085Z",
+    "startedAt": "2026-11-14T00:06:52.177Z",
     "attempts": 0,
-    "bisect": null
+    "bisect": null,
+    "pendingRed": {
+      "batchId": "b8",
+      "candidateSha": "96e927e657e4324d08f54f5ac305ffb0934f5f2e",
+      "prs": [
+        {
+          "n": 17,
+          "head": "0fd414e7086236d3ef6d49133e39fdb6f24c14e7",
+          "title": "Base-red scenario: change 1",
+          "author": "diegosouzapw",
+          "labeledAt": "2026-11-13T23:55:13Z"
+        },
+        {
+          "n": 18,
+          "head": "0dd37572fefa099897137c4dbd11c14030333389",
+          "title": "Base-red scenario: change 2",
+          "author": "diegosouzapw",
+          "labeledAt": "2026-11-13T23:55:16Z"
+        }
+      ],
+      "signatures": [
+        {
+          "check": "Gate / CI",
+          "key": "base_red toy/base-red",
+          "infra": false
+        }
+      ],
+      "bisect": null
+    }
   },
   "baseChecks": [],
   "shadow": {
@@ -36,10 +49,10 @@
   },
   "counters": {
     "batchSeq": 8,
-    "ciRuns": 8,
+    "ciRuns": 9,
     "landedPrs": 11,
     "landedBatches": 3,
-    "redBatches": 3,
+    "redBatches": 4,
     "bisections": 1,
     "culprits": 1
   },
@@ -372,7 +385,31 @@
         "18": "2026-11-13T23:55:16Z"
       },
       "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43531813659"
+    },
+    {
+      "at": "2026-11-14T00:06:51.892Z",
+      "type": "checks-red",
+      "batchId": "b8",
+      "prs": [
+        17,
+        18
+      ],
+      "sha": "96e927e657e4324d08f54f5ac305ffb0934f5f2e",
+      "detail": "Gate / CI",
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43531896858"
+    },
+    {
+      "at": "2026-11-14T00:06:54.569Z",
+      "type": "base-check-started",
+      "batchId": "basecheck-a843649be579",
+      "prs": [
+        17,
+        18
+      ],
+      "sha": "a843649be57978546bda45353d72d7466aa49001",
+      "detail": "b8 red while a base-red issue is open: testing the bare base",
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43531896858"
     }
   ],
-  "updatedAt": "2026-11-14T00:06:16.074Z"
+  "updatedAt": "2026-11-14T00:07:01.540Z"
 }
