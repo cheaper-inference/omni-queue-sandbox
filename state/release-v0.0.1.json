@@ -2,34 +2,7 @@
   "version": 1,
   "base": "release/v0.0.1",
   "paused": null,
-  "inFlight": {
-    "batchId": "b11",
-    "kind": "batch",
-    "candidateRef": "omni-queue/release-v0.0.1/b11-ee5e43492603",
-    "candidateSha": "ee5e434926035b8c54c616f9ebd01b1f7a76528c",
-    "baseSha": "5778ec4b3c8896163396e4437cacf80d891f4a58",
-    "treeSha": "6467f9839e42cacc42152efb0bfc6033745f4b57",
-    "prs": [
-      {
-        "n": 20,
-        "head": "1dc8bfc7b8d6895f9c3c8af898b9fb71622ed7e4",
-        "title": "Race scenario: change 1",
-        "author": "diegosouzapw",
-        "labeledAt": "2026-11-14T00:10:57Z"
-      },
-      {
-        "n": 21,
-        "head": "c48b38a476d266c3a48100f11accb1819cd637c7",
-        "title": "Race scenario: change 2",
-        "author": "diegosouzapw",
-        "labeledAt": "2026-11-14T00:10:59Z"
-      }
-    ],
-    "stage": "testing",
-    "startedAt": "2026-11-14T00:22:19.020Z",
-    "attempts": 0,
-    "bisect": null
-  },
+  "inFlight": null,
   "baseChecks": [
     {
       "baseSha": "a843649be57978546bda45353d72d7466aa49001",
@@ -51,8 +24,8 @@
   "counters": {
     "batchSeq": 11,
     "ciRuns": 12,
-    "landedPrs": 13,
-    "landedBatches": 4,
+    "landedPrs": 15,
+    "landedBatches": 5,
     "redBatches": 4,
     "bisections": 1,
     "culprits": 1
@@ -530,7 +503,29 @@
         "21": "2026-11-14T00:10:59Z"
       },
       "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43533702138"
+    },
+    {
+      "at": "2026-11-14T00:22:51.766Z",
+      "type": "checks-green",
+      "batchId": "b11",
+      "prs": [
+        20,
+        21
+      ],
+      "sha": "ee5e434926035b8c54c616f9ebd01b1f7a76528c",
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43533753401"
+    },
+    {
+      "at": "2026-11-14T00:22:56.637Z",
+      "type": "landed",
+      "batchId": "b11",
+      "prs": [
+        20,
+        21
+      ],
+      "sha": "ee5e434926035b8c54c616f9ebd01b1f7a76528c",
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43533753401"
     }
   ],
-  "updatedAt": "2026-11-14T00:22:30.529Z"
+  "updatedAt": "2026-11-14T00:23:04.552Z"
 }
