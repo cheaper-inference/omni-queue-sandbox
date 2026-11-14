@@ -35,7 +35,8 @@ export class GitHubError extends Error {
 
 /**
  * @typedef {PullSummary & {state: "open"|"closed", merged: boolean, mergeable: boolean|null,
- *           mergeableState: string, body: string}} Pull
+ *           mergeableState: string, body: string, changedFiles: number|null}} Pull
+ *   changedFiles = GitHub's `changed_files` count (null when absent)
  */
 
 /**
@@ -54,6 +55,9 @@ export class GitHubError extends Error {
  * @property {(opts?: {base?: string}) => Promise<PullSummary[]>} listOpenPulls
  * @property {(n: number) => Promise<Pull>} getPull
  * @property {(n: number) => Promise<string[]>} listPullFiles   incl. previous_filename of renames
+ * @property {(n: number) => Promise<{files: string[], listed: number}>} listPullFileManifest
+ *            files as listPullFiles; listed = entries GitHub returned (it stops at 3,000), to
+ *            compare with Pull.changedFiles
  * @property {(n: number) => Promise<import("./eligibility.mjs").TimelineEvent[]>} listIssueTimeline
  * @property {(n: number, labels: string[]) => Promise<void>} addLabels
  * @property {(n: number, label: string) => Promise<void>} removeLabel   404 = already absent (ok)
@@ -111,6 +115,10 @@ export class GitHubError extends Error {
  * @property {(q: {branch?: string, headSha?: string, event?: string}) => Promise<{id: number,
  *            name: string, status: string, conclusion: string|null, htmlUrl: string,
  *            headSha: string, event: string}[]>} listWorkflowRuns
+ * @property {(workflowFile: string, q: {branch?: string, event?: string}) => Promise<{id: number,
+ *            name: string, status: string, conclusion: string|null, htmlUrl: string,
+ *            headSha: string, event: string}[]>} listWorkflowFileRuns   runs of ONE workflow
+ *            file, newest first (first page only: callers look for runs they just triggered)
  * @property {(workflowFile: string, ref: string, inputs: object) => Promise<void>} dispatchWorkflow
  * @property {() => Promise<object[]>} listRulesets
  * @property {(id: number) => Promise<object>} getRuleset
@@ -158,18 +166,20 @@ export function isRateLimited(status, headers, data) {
 
 /**
  * Delay before retry `attempt` (0-based): Retry-After seconds, else the primary-limit reset
- * time, else exponential backoff. Always within [0, maxDelayMs].
+ * time, else exponential backoff. Only the local backoff is capped at maxDelayMs: a delay the
+ * server asked for is never shortened, so a result above maxDelayMs means "do not retry now".
  * @param {number} attempt
  * @param {Headers|null} headers
  * @param {{baseDelayMs: number, maxDelayMs: number, nowMs: number}} opts
  */
 export function retryDelayMs(attempt, headers, { baseDelayMs, maxDelayMs, nowMs }) {
   const clamp = (ms) => Math.min(maxDelayMs, Math.max(0, Math.round(ms)));
+  const server = (ms) => Math.max(0, Math.round(ms));
   const retryAfter = headers?.get("retry-after")?.trim();
-  if (retryAfter && /^\d+$/.test(retryAfter)) return clamp(Number(retryAfter) * 1000);
+  if (retryAfter && /^\d+$/.test(retryAfter)) return server(Number(retryAfter) * 1000);
   if (headers?.get("x-ratelimit-remaining") === "0") {
     const reset = Number(headers.get("x-ratelimit-reset"));
-    if (Number.isFinite(reset) && reset > 0) return clamp(reset * 1000 - nowMs + 1000);
+    if (Number.isFinite(reset) && reset > 0) return server(reset * 1000 - nowMs + 1000);
   }
   return clamp(baseDelayMs * 2 ** attempt);
 }
@@ -211,6 +221,7 @@ export function normalizePull(raw) {
     mergeable: typeof raw.mergeable === "boolean" ? raw.mergeable : null,
     mergeableState: String(raw.mergeable_state ?? "unknown"),
     body: String(raw.body ?? ""),
+    changedFiles: Number.isSafeInteger(raw.changed_files) ? raw.changed_files : null,
   };
 }
 
@@ -343,7 +354,9 @@ function errorMessage(data, fallback) {
  *          sleep?: (ms: number) => Promise<void>, log?: (msg: string) => void,
  *          maxRetries?: number, userAgent?: string, baseDelayMs?: number, maxDelayMs?: number,
  *          nowMs?: () => number, botLogin?: string, requestTimeoutMs?: number}} options
- *   baseDelayMs/maxDelayMs/nowMs tune the backoff (tests); botLogin, when set, makes commentOnce
+ *   baseDelayMs/maxDelayMs/nowMs tune the backoff (tests); maxDelayMs (default 120 s) is also
+ *   the longest Retry-After / rate-limit reset wait honored: a longer one throws at once;
+ *   botLogin, when set, makes commentOnce
  *   count only markers in comments authored by that login (a third party cannot pre-post one);
  *   requestTimeoutMs (default 30 s) aborts a hung request, which then counts as a network error.
  * @returns {GitHubClient}
@@ -450,6 +463,18 @@ export function createGitHubClient(options) {
           maxDelayMs,
           nowMs: nowMs(),
         });
+        if (delay > maxDelayMs) {
+          // The server asked for a longer wait than one tick should sleep: retrying earlier only
+          // adds rate-limit pressure. Fail now; the next tick tries again.
+          const wait = Math.ceil(delay / 1000);
+          const why = redact(errorMessage(data, res.statusText));
+          throw new GitHubError(
+            status,
+            method,
+            shown,
+            `retry after ${wait} s (over the ${maxDelayMs} ms retry cap): ${why}`
+          );
+        }
         log(`${method} ${shown} → ${status}; retry ${attempt + 1}/${maxRetries} in ${delay} ms`);
         await sleep(delay);
         continue;
@@ -488,6 +513,17 @@ export function createGitHubClient(options) {
   async function listIssueComments(n) {
     assertNumber(n);
     return (await paginate(r(`/issues/${n}/comments`))).map(normalizeComment);
+  }
+
+  async function listPullFileManifest(n) {
+    assertNumber(n);
+    const files = new Set();
+    const entries = await paginate(r(`/pulls/${n}/files`));
+    for (const f of entries) {
+      if (f.filename) files.add(f.filename);
+      if (f.previous_filename) files.add(f.previous_filename);
+    }
+    return { files: [...files], listed: entries.length };
   }
 
   async function createIssueComment(n, body) {
@@ -531,14 +567,10 @@ export function createGitHubClient(options) {
     },
 
     async listPullFiles(n) {
-      assertNumber(n);
-      const files = new Set();
-      for (const f of await paginate(r(`/pulls/${n}/files`))) {
-        if (f.filename) files.add(f.filename);
-        if (f.previous_filename) files.add(f.previous_filename);
-      }
-      return [...files];
+      return (await listPullFileManifest(n)).files;
     },
+
+    listPullFileManifest,
 
     async listIssueTimeline(n) {
       assertNumber(n);
@@ -567,18 +599,20 @@ export function createGitHubClient(options) {
       const ours = (c) => c.body.includes(marker) && (!botLogin || c.author === botLogin);
       if ((await listIssueComments(n)).some(ours)) return { posted: false };
       const { id } = await createIssueComment(n, `${body}\n\n${marker}`);
-      // Read-then-write is not atomic: another writer (or a replayed POST) may have posted the
-      // same marker meanwhile. The lowest id wins; drop the newer one this call created.
-      const winner = (await listIssueComments(n))
-        .filter(ours)
-        .map((c) => c.id)
-        .sort((a, b) => a - b)[0];
-      if (winner !== undefined && id !== undefined && winner !== id) {
-        await deleteIssueComment(id);
-        log(`commentOnce #${n} ${key}: duplicate ${id} removed (kept ${winner})`);
-        return { posted: false };
+      // Read-then-write is not atomic: another writer may have posted the same marker meanwhile,
+      // and each POST replayed after a 5xx may have left one more copy. The lowest id wins; drop
+      // every newer copy written by our login (never a comment of someone else).
+      const found = (await listIssueComments(n)).filter(ours).sort((a, b) => a.id - b.id);
+      const winner = found[0]?.id;
+      if (winner === undefined || id === undefined) return { posted: true };
+      const self = botLogin ?? found.find((c) => c.id === id)?.author;
+      const extra = found.filter((c) => c.id !== winner && (c.id === id || c.author === self));
+      for (const c of extra) await deleteIssueComment(c.id);
+      if (extra.length) {
+        const ids = extra.map((c) => c.id).join(", ");
+        log(`commentOnce #${n} ${key}: duplicate(s) ${ids} removed (kept ${winner})`);
       }
-      return { posted: true };
+      return { posted: winner === id };
     },
 
     async listIssues({ labels, state = "open" } = {}) {
@@ -809,6 +843,13 @@ export function createGitHubClient(options) {
         ...(event ? { event } : {}),
       };
       const runs = await paginate(r("/actions/runs"), query, { maxPages: 10 });
+      return runs.map(normalizeWorkflowRun);
+    },
+
+    async listWorkflowFileRuns(workflowFile, { branch, event } = {}) {
+      const query = { ...(branch ? { branch } : {}), ...(event ? { event } : {}) };
+      const path = r(`/actions/workflows/${encodeURIComponent(workflowFile)}/runs`);
+      const runs = await paginate(path, query, { maxPages: 1 });
       return runs.map(normalizeWorkflowRun);
     },
 
