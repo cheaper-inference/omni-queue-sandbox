@@ -2,7 +2,27 @@
   "version": 1,
   "base": "release/v0.0.1",
   "paused": null,
-  "inFlight": null,
+  "inFlight": {
+    "batchId": "b12",
+    "kind": "batch",
+    "candidateRef": "omni-queue/release-v0.0.1/b12-8b2fda02a039",
+    "candidateSha": "8b2fda02a0391bf9a9c6c38b513e908b79b07bba",
+    "baseSha": "ee5e434926035b8c54c616f9ebd01b1f7a76528c",
+    "treeSha": "b6c605dfbe9f07eb8b3347580646ad0ae369818a",
+    "prs": [
+      {
+        "n": 25,
+        "head": "ad1023d98b71b4d1eceb249da16b36f43315c9aa",
+        "title": "Protected scenario: touches AGENTS.md",
+        "author": "diegosouzapw",
+        "labeledAt": "2026-11-14T00:24:02Z"
+      }
+    ],
+    "stage": "testing",
+    "startedAt": "2026-11-14T00:35:19.814Z",
+    "attempts": 0,
+    "bisect": null
+  },
   "baseChecks": [
     {
       "baseSha": "a843649be57978546bda45353d72d7466aa49001",
@@ -22,8 +42,8 @@
     "processed": {}
   },
   "counters": {
-    "batchSeq": 11,
-    "ciRuns": 12,
+    "batchSeq": 12,
+    "ciRuns": 13,
     "landedPrs": 15,
     "landedBatches": 5,
     "redBatches": 4,
@@ -525,7 +545,21 @@
       ],
       "sha": "ee5e434926035b8c54c616f9ebd01b1f7a76528c",
       "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43533753401"
+    },
+    {
+      "at": "2026-11-14T00:35:22.305Z",
+      "type": "batch-started",
+      "batchId": "b12",
+      "prs": [
+        25
+      ],
+      "sha": "8b2fda02a0391bf9a9c6c38b513e908b79b07bba",
+      "detail": "1 PR(s) on ee5e43492603",
+      "labeledAt": {
+        "25": "2026-11-14T00:24:02Z"
+      },
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43535156446"
     }
   ],
-  "updatedAt": "2026-11-14T00:34:49.164Z"
+  "updatedAt": "2026-11-14T00:35:23.800Z"
 }
