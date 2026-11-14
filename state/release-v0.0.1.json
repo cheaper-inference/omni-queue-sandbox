@@ -3,36 +3,27 @@
   "base": "release/v0.0.1",
   "paused": null,
   "inFlight": {
-    "batchId": "b16",
+    "batchId": "b17",
     "kind": "batch",
-    "candidateRef": "omni-queue/release-v0.0.1/b16-1121809df4d4",
-    "candidateSha": "1121809df4d467e3a306c548e872b0de91cbba9d",
-    "baseSha": "335f39f6b381f8f5bc9e634f81214a390ed20fd0",
-    "treeSha": "63f25923af3b631d2ca91aac86e07e00445c1d2c",
+    "candidateRef": "omni-queue/release-v0.0.1/b17-02ba921d6ff7",
+    "candidateSha": "02ba921d6ff713341f93570c2cdc92ab38b71ab9",
+    "baseSha": "1121809df4d467e3a306c548e872b0de91cbba9d",
+    "treeSha": "c7f20520337365161b54f7dcd87eea6f408d40d7",
     "prs": [
       {
-        "n": 34,
-        "head": "a315d6d893ee15efaee18b6abcedd474402ab825",
-        "title": "Shadow rehearsal: good",
+        "n": 35,
+        "head": "bc29c466cca11df18bd260d9f10506b6c0dc3a9a",
+        "title": "Shadow rehearsal: breaks CI",
         "author": "diegosouzapw",
-        "labeledAt": "2026-11-14T16:09:20Z"
+        "labeledAt": "2026-11-14T16:09:22Z"
       }
     ],
     "stage": "testing",
-    "startedAt": "2026-11-14T16:21:11.072Z",
+    "startedAt": "2026-11-14T16:21:40.559Z",
     "attempts": 0,
     "bisect": {
       "rootBatchId": "b15",
       "segments": [
-        [
-          {
-            "n": 34,
-            "head": "a315d6d893ee15efaee18b6abcedd474402ab825",
-            "title": "Shadow rehearsal: good",
-            "author": "diegosouzapw",
-            "labeledAt": "2026-11-14T16:09:20Z"
-          }
-        ],
         [
           {
             "n": 35,
@@ -44,8 +35,10 @@
         ]
       ],
       "culprits": [],
-      "landed": [],
-      "steps": 0
+      "landed": [
+        34
+      ],
+      "steps": 1
     }
   },
   "baseChecks": [
@@ -64,11 +57,13 @@
     }
   ],
   "shadow": {
-    "processed": {}
+    "processed": {
+      "34": "a315d6d893ee15efaee18b6abcedd474402ab825"
+    }
   },
   "counters": {
-    "batchSeq": 16,
-    "ciRuns": 17,
+    "batchSeq": 17,
+    "ciRuns": 18,
     "landedPrs": 20,
     "landedBatches": 8,
     "redBatches": 5,
@@ -734,7 +729,42 @@
         "34": "2026-11-14T16:09:20Z"
       },
       "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43615116021"
+    },
+    {
+      "at": "2026-11-14T16:21:37.252Z",
+      "type": "checks-green",
+      "batchId": "b16",
+      "prs": [
+        34
+      ],
+      "sha": "1121809df4d467e3a306c548e872b0de91cbba9d",
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43615158547"
+    },
+    {
+      "at": "2026-11-14T16:21:38.812Z",
+      "type": "would-land",
+      "batchId": "b16",
+      "prs": [
+        34
+      ],
+      "sha": "1121809df4d467e3a306c548e872b0de91cbba9d",
+      "detail": "shadow mode: would merge-ff onto 335f39f6b381",
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43615158547"
+    },
+    {
+      "at": "2026-11-14T16:21:42.434Z",
+      "type": "batch-started",
+      "batchId": "b17",
+      "prs": [
+        35
+      ],
+      "sha": "02ba921d6ff713341f93570c2cdc92ab38b71ab9",
+      "detail": "bisect of b15: 1 PR(s) on 1121809df4d4 (shadow stack over 335f39f6b381)",
+      "labeledAt": {
+        "35": "2026-11-14T16:09:22Z"
+      },
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43615158547"
     }
   ],
-  "updatedAt": "2026-11-14T16:21:20.982Z"
+  "updatedAt": "2026-11-14T16:21:49.723Z"
 }
