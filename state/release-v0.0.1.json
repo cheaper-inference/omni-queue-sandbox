@@ -2,14 +2,41 @@
   "version": 1,
   "base": "release/v0.0.1",
   "paused": null,
-  "inFlight": null,
+  "inFlight": {
+    "batchId": "b8",
+    "kind": "batch",
+    "candidateRef": "omni-queue/release-v0.0.1/b8-96e927e657e4",
+    "candidateSha": "96e927e657e4324d08f54f5ac305ffb0934f5f2e",
+    "baseSha": "a843649be57978546bda45353d72d7466aa49001",
+    "treeSha": "b386d2869364c1e743319a66370dd0ac59a1b8e7",
+    "prs": [
+      {
+        "n": 17,
+        "head": "0fd414e7086236d3ef6d49133e39fdb6f24c14e7",
+        "title": "Base-red scenario: change 1",
+        "author": "diegosouzapw",
+        "labeledAt": "2026-11-13T23:55:13Z"
+      },
+      {
+        "n": 18,
+        "head": "0dd37572fefa099897137c4dbd11c14030333389",
+        "title": "Base-red scenario: change 2",
+        "author": "diegosouzapw",
+        "labeledAt": "2026-11-13T23:55:16Z"
+      }
+    ],
+    "stage": "testing",
+    "startedAt": "2026-11-14T00:06:12.085Z",
+    "attempts": 0,
+    "bisect": null
+  },
   "baseChecks": [],
   "shadow": {
     "processed": {}
   },
   "counters": {
-    "batchSeq": 7,
-    "ciRuns": 7,
+    "batchSeq": 8,
+    "ciRuns": 8,
     "landedPrs": 11,
     "landedBatches": 3,
     "redBatches": 3,
@@ -329,7 +356,23 @@
       ],
       "sha": "e4909b4b228da7c9eb1d4e9d55aeaba5b5dd4784",
       "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43530358439"
+    },
+    {
+      "at": "2026-11-14T00:06:13.793Z",
+      "type": "batch-started",
+      "batchId": "b8",
+      "prs": [
+        17,
+        18
+      ],
+      "sha": "96e927e657e4324d08f54f5ac305ffb0934f5f2e",
+      "detail": "2 PR(s) on a843649be579",
+      "labeledAt": {
+        "17": "2026-11-13T23:55:13Z",
+        "18": "2026-11-13T23:55:16Z"
+      },
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43531813659"
     }
   ],
-  "updatedAt": "2026-11-13T23:56:15.764Z"
+  "updatedAt": "2026-11-14T00:06:16.074Z"
 }
