@@ -2,45 +2,7 @@
   "version": 1,
   "base": "release/v0.0.1",
   "paused": null,
-  "inFlight": {
-    "batchId": "b17",
-    "kind": "batch",
-    "candidateRef": "omni-queue/release-v0.0.1/b17-02ba921d6ff7",
-    "candidateSha": "02ba921d6ff713341f93570c2cdc92ab38b71ab9",
-    "baseSha": "1121809df4d467e3a306c548e872b0de91cbba9d",
-    "treeSha": "c7f20520337365161b54f7dcd87eea6f408d40d7",
-    "prs": [
-      {
-        "n": 35,
-        "head": "bc29c466cca11df18bd260d9f10506b6c0dc3a9a",
-        "title": "Shadow rehearsal: breaks CI",
-        "author": "diegosouzapw",
-        "labeledAt": "2026-11-14T16:09:22Z"
-      }
-    ],
-    "stage": "testing",
-    "startedAt": "2026-11-14T16:21:40.559Z",
-    "attempts": 0,
-    "bisect": {
-      "rootBatchId": "b15",
-      "segments": [
-        [
-          {
-            "n": 35,
-            "head": "bc29c466cca11df18bd260d9f10506b6c0dc3a9a",
-            "title": "Shadow rehearsal: breaks CI",
-            "author": "diegosouzapw",
-            "labeledAt": "2026-11-14T16:09:22Z"
-          }
-        ]
-      ],
-      "culprits": [],
-      "landed": [
-        34
-      ],
-      "steps": 1
-    }
-  },
+  "inFlight": null,
   "baseChecks": [
     {
       "baseSha": "a843649be57978546bda45353d72d7466aa49001",
@@ -58,7 +20,8 @@
   ],
   "shadow": {
     "processed": {
-      "34": "a315d6d893ee15efaee18b6abcedd474402ab825"
+      "34": "a315d6d893ee15efaee18b6abcedd474402ab825",
+      "35": "bc29c466cca11df18bd260d9f10506b6c0dc3a9a"
     }
   },
   "counters": {
@@ -66,9 +29,9 @@
     "ciRuns": 18,
     "landedPrs": 20,
     "landedBatches": 8,
-    "redBatches": 5,
+    "redBatches": 6,
     "bisections": 2,
-    "culprits": 1
+    "culprits": 2
   },
   "history": [
     {
@@ -764,7 +727,29 @@
         "35": "2026-11-14T16:09:22Z"
       },
       "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43615158547"
+    },
+    {
+      "at": "2026-11-14T16:22:13.463Z",
+      "type": "checks-red",
+      "batchId": "b17",
+      "prs": [
+        35
+      ],
+      "sha": "02ba921d6ff713341f93570c2cdc92ab38b71ab9",
+      "detail": "Gate / CI",
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43615199314"
+    },
+    {
+      "at": "2026-11-14T16:22:14.039Z",
+      "type": "culprit-found",
+      "batchId": "b17",
+      "prs": [
+        35
+      ],
+      "sha": "02ba921d6ff713341f93570c2cdc92ab38b71ab9",
+      "detail": "Gate / CI; shadow mode: label kept, no comment",
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43615199314"
     }
   ],
-  "updatedAt": "2026-11-14T16:21:49.723Z"
+  "updatedAt": "2026-11-14T16:22:22.169Z"
 }
