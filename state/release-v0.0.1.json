@@ -2,27 +2,7 @@
   "version": 1,
   "base": "release/v0.0.1",
   "paused": null,
-  "inFlight": {
-    "batchId": "b18",
-    "kind": "batch",
-    "candidateRef": "omni-queue/release-v0.0.1/b18-61f68ebcc91b",
-    "candidateSha": "61f68ebcc91b1713deed998bffd1a78ccaf7f0e9",
-    "baseSha": "cbbb718db8933779c6abda3eddfa8447375c42a7",
-    "treeSha": "597a3e2b8151dde73efd1a5b1c6d78691951a3cf",
-    "prs": [
-      {
-        "n": 35,
-        "head": "bc29c466cca11df18bd260d9f10506b6c0dc3a9a",
-        "title": "Shadow rehearsal: breaks CI",
-        "author": "diegosouzapw",
-        "labeledAt": "2026-11-14T16:09:22Z"
-      }
-    ],
-    "stage": "testing",
-    "startedAt": "2026-11-14T16:31:41.866Z",
-    "attempts": 0,
-    "bisect": null
-  },
+  "inFlight": null,
   "baseChecks": [
     {
       "baseSha": "a843649be57978546bda45353d72d7466aa49001",
@@ -49,9 +29,9 @@
     "ciRuns": 19,
     "landedPrs": 20,
     "landedBatches": 8,
-    "redBatches": 6,
+    "redBatches": 7,
     "bisections": 2,
-    "culprits": 2
+    "culprits": 3
   },
   "history": [
     {
@@ -783,7 +763,29 @@
         "35": "2026-11-14T16:09:22Z"
       },
       "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43615975655"
+    },
+    {
+      "at": "2026-11-14T16:33:56.403Z",
+      "type": "checks-red",
+      "batchId": "b18",
+      "prs": [
+        35
+      ],
+      "sha": "61f68ebcc91b1713deed998bffd1a78ccaf7f0e9",
+      "detail": "Gate / CI",
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43616033271"
+    },
+    {
+      "at": "2026-11-14T16:33:58.804Z",
+      "type": "culprit-found",
+      "batchId": "b18",
+      "prs": [
+        35
+      ],
+      "sha": "61f68ebcc91b1713deed998bffd1a78ccaf7f0e9",
+      "detail": "Gate / CI",
+      "url": "https://github.com/cheaper-inference/omni-queue-sandbox/actions/runs/43616033271"
     }
   ],
-  "updatedAt": "2026-11-14T16:31:45.337Z"
+  "updatedAt": "2026-11-14T16:34:07.853Z"
 }
